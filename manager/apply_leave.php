@@ -390,38 +390,10 @@
 </script>
 
 <script>
-    const picker = document.getElementById('date_form');
-    picker.addEventListener('input', function(e){
-    var day = new Date(this.value).getUTCDay();
-    if([6,0].includes(day)){
-      e.preventDefault();
-      this.value = '';
-      alert('Weekends not allowed');
-    } else {
-        calc();
-    }
-   });
+    const date_from = document.getElementById('date_form');
+    const date_to = document.getElementById('date_to');
 
-   const pickers = document.getElementById('date_to');
-    pickers.addEventListener('input', function(e){
-    var day = new Date(this.value).getUTCDay();
-    if([6,0].includes(day)){
-      e.preventDefault();
-      this.value = '';
-      alert('Weekends not allowed');
-    }else {
-        calc();
-    }
-   });
-
-    function calc() {
-      const date_to = document.getElementById('date_to');
-      const date_from = document.getElementById('date_form');
-      result = getBusinessDateCount(new Date(date_from.value), new Date(date_to.value));
-      var work = document.getElementById("requested_days");
-      work.value = result;
-}
-
+    // Function to calculate the number of business days between two dates
     function getBusinessDateCount(startDate, endDate) {
         var elapsed, daysBeforeFirstSaturday, daysAfterLastSunday;
         var ifThen = function(a, b, c) {
@@ -439,9 +411,59 @@
         elapsed += ifThen(daysBeforeFirstSunday - 1, -1, 0) + ifThen(daysAfterLastSunday, 6, 5);
 
         return Math.ceil(elapsed);
-     }
+    }
 
+    // Function to handle date change events
+    function handleDateChange() {
+        var selectedDate = new Date(this.value);
+        var day = selectedDate.getUTCDay();
+        var month = selectedDate.getMonth();
+        var year = selectedDate.getFullYear();
+
+        // Define an array of holiday dates
+        var holidays = {
+            "January": [15, 25],
+            "February": [23],
+            "March": [29],
+            "April": [11, 12, 23],
+            "May": [1, 23, 24],
+            "June": [21],
+            "July": [20],
+            "August": [19],
+            "September": [16, 17],
+            "October": [17, 31],
+            "November": [15],
+            "December": [25]
+        };
+
+        // Check if the selected date is a weekend (Saturday or Sunday)
+        if ([6, 0].includes(day)) {
+            this.value = '';
+            alert('Weekends not allowed');
+        } else {
+            // Check if the selected date is a holiday
+            var monthName = Object.keys(holidays)[month];
+            if (holidays[monthName] && holidays[monthName].includes(selectedDate.getDate())) {
+                this.value = '';
+                alert('Holidays not allowed');
+            } else {
+                calc();
+            }
+        }
+    }
+
+    // Attach event listeners to date picker inputs
+    date_from.addEventListener('change', handleDateChange);
+    date_to.addEventListener('change', handleDateChange);
+
+    // Function to calculate the requested leave days
+    function calc() {
+        const result = getBusinessDateCount(new Date(date_from.value), new Date(date_to.value));
+        const work = document.getElementById("requested_days");
+        work.value = result;
+    }
 </script>
+
 
     <script src="../vendors/scripts/core.js"></script>
     <script src="../vendors/scripts/script.min.js"></script>
