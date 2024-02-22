@@ -141,8 +141,8 @@
 								<th class="table-plus datatable-nosort">STAFF NAME</th>
 								<th>LEAVE TYPE</th>
 								<th>APPLIED DATE</th>
-								<th>HOD STATUS</th>
-								<th>REG. STATUS</th>
+								<th>LEADER STATUS</th>
+								<th>MANAGER STATUS</th>
 								<th class="datatable-nosort">ACTION</th>
 							</tr>
 						</thead>
