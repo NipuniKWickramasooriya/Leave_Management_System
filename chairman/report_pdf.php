@@ -4,7 +4,7 @@
 	require_once('../TCPDF-main/tcpdf.php');
 
 	$did=intval($_GET['leave_id']);
-	$sql = "SELECT tblleave.id as lid,tblemployees.FirstName,tblemployees.LastName,tblemployees.emp_id,tblemployees.Gender,tblemployees.Phonenumber,tblemployees.EmailId,tblemployees.Av_leave,tblemployees.Position_Staff,tblemployees.Staff_ID,tblleave.LeaveType,tblleave.ToDate,tblleave.FromDate,tblleave.PostingDate,tblleave.RequestedDays,tblleave.DaysOutstand,tblleave.Sign,tblleave.WorkCovered,tblleave.HodRemarks,tblleave.RegRemarks,tblleave.HodSign,tblleave.RegSign,tblleave.HodDate,tblleave.RegDate,tblleave.num_days from tblleave join tblemployees on tblleave.empid=tblemployees.emp_id where tblleave.id='$did'";
+	$sql = "SELECT tblmgleave.id as lid,tblemployees.FirstName,tblemployees.LastName,tblemployees.emp_id,tblemployees.Gender,tblemployees.Phonenumber,tblemployees.EmailId,tblemployees.Av_leave,tblemployees.Position_Staff,tblemployees.Staff_ID,tblmgleave.LeaveType,tblmgleave.ToDate,tblmgleave.FromDate,tblmgleave.PostingDate,tblmgleave.RequestedDays,tblmgleave.DaysOutstand,tblmgleave.Sign,tblmgleave.WorkCovered,tblmgleave.HodRemarks,tblmgleave.RegRemarks,tblmgleave.HodSign,tblmgleave.RegSign,tblmgleave.HodDate,tblmgleave.RegDate,tblmgleave.num_days from tblmgleave join tblemployees on tblmgleave.empid=tblemployees.emp_id where tblmgleave.id='$did'";
 	$query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
 	while ($row = mysqli_fetch_array($query)) {
 		$firstname = $row['FirstName'];
@@ -107,7 +107,7 @@
 	$pdf->Ln(8);
 	$pdf->SetFont('times','B', 12);
 	$pdf->Cell(130, 6, '2.          Position:    '.$position.' ', 0, 0);
-	$pdf->Cell(59, 6, '   Staff ID Number:    '.$staff_id.' ', 0, 1);
+	$pdf->Cell(59, 6, '   Emp ID Number:    '.$staff_id.' ', 0, 1);
 
 	$pdf->Ln(8);
 	
@@ -133,10 +133,6 @@
 
 	$pdf->Ln(3);
 	
-	$pdf->SetFont('times','B', 12);
-	$pdf->Cell(95, 18, '10.        Recommendation By (Head of Department): ......................', 0, 0);
-	$pdf->writeHTMLCell(35,30,'','', '', 0, 0);
-	$pdf->Cell(59, 18, 'Date:   '.$hod_date.'', 0, 1);
 
 	$pdf->Ln(8);
 	
@@ -146,7 +142,7 @@
 	$pdf->Ln(8);
 	
 	$pdf->SetFont('times','B', 12);
-	$pdf->Cell(75, 18, '12.        Approved By (Rector/Registra): ......................', 0, 0);
+	$pdf->Cell(75, 18, '12.        Approved By (Chairman): ......................', 0, 0);
 	$pdf->writeHTMLCell(55,1,'','', '', 0, 0);
 	$pdf->Cell(59, 18, 'Date:   '.$reg_date.'', 0, 1);
 

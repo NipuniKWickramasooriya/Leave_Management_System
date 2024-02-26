@@ -164,7 +164,7 @@
 						else {
 						
 						$lid=intval($_GET['leaveid']);
-						$sql = "SELECT tblleave.id as lid,tblemployees.FirstName,tblemployees.LastName,tblemployees.emp_id,tblemployees.Gender,tblemployees.Phonenumber,tblemployees.EmailId,tblemployees.Av_leave,tblemployees.Position_Staff,tblemployees.emp_id,tblleave.LeaveType,tblleave.ToDate,tblleave.FromDate,tblleave.PostingDate,tblleave.RequestedDays,tblleave.DaysOutstand,tblleave.Sign,tblleave.WorkCovered,tblleave.HodRemarks,tblleave.RegRemarks,tblleave.HodSign,tblleave.RegSign,tblleave.HodDate,tblleave.RegDate,tblleave.num_days from tblleave join tblemployees on tblleave.empid=tblemployees.emp_id where tblleave.id=:lid";
+						$sql = "SELECT tblmgleave.id as lid,tblemployees.FirstName,tblemployees.LastName,tblemployees.emp_id,tblemployees.Gender,tblemployees.Phonenumber,tblemployees.EmailId,tblemployees.Av_leave,tblemployees.Position_Staff,tblemployees.emp_id,tblmgleave.LeaveType,tblmgleave.ToDate,tblmgleave.FromDate,tblmgleave.PostingDate,tblmgleave.RequestedDays,tblmgleave.DaysOutstand,tblmgleave.Sign,tblmgleave.WorkCovered,tblmgleave.HodRemarks,tblmgleave.RegRemarks,tblmgleave.HodSign,tblmgleave.RegSign,tblmgleave.HodDate,tblmgleave.RegDate,tblmgleave.num_days from tblmgleave join tblemployees on tblmgleave.empid=tblemployees.emp_id where tblmgleave.id=:lid";
 						$query = $dbh -> prepare($sql);
 						$query->bindParam(':lid',$lid,PDO::PARAM_STR);
 						$query->execute();
@@ -259,7 +259,7 @@
 						<div class="form-group row">
 							<div class="col-md-6 col-sm-12">
 							    <div class="form-group">
-									<label style="font-size:16px;"><b>Leader's Approval</b></label>
+									<label style="font-size:16px;"><b>Chairmen's Approval</b></label>
 									<?php
 									if ($result->HodSign==""): ?>
 									  <input type="text" class="selectpicker form-control" data-style="btn-outline-primary" readonly value="<?php echo "NA"; ?>">
@@ -270,24 +270,12 @@
 									<?php endif ?>
 							    </div>
 							</div>
-							<div class="col-md-6 col-sm-12">
-								<div class="form-group">
-									<label style="font-size:16px;"><b>Chairmen's Approval</b></label>
-									<?php
-									if ($result->RegSign==""): ?>
-									  <input type="text" class="selectpicker form-control" data-style="btn-outline-primary" readonly value="<?php echo "NA"; ?>">
-									<?php else: ?>
-									  <div class="avatar mr-2 flex-shrink-0">
-										<img src="<?php echo '../signature/'.($result->RegSign);?>" width="100" height="40" alt="">
-									  </div>
-									<?php endif ?>
-								</div>
-							</div>
+							
 						</div>
 						<div class="form-group row">
 							<div class="col-md-6 col-sm-12">
 							    <div class="form-group">
-									<label style="font-size:16px;"><b>Date For Leader's Action</b></label>
+									<label style="font-size:16px;"><b>Date For Chairman's Action</b></label>
 									<?php
 									if ($result->HodDate==""): ?>
 									  <input type="text" class="selectpicker form-control" data-style="btn-outline-primary" readonly value="<?php echo "NA"; ?>">
@@ -298,24 +286,12 @@
 									<?php endif ?>
 							    </div>
 							</div>
-							<div class="col-md-6 col-sm-12">
-								<div class="form-group">
-									<label style="font-size:16px;"><b>Date For Chairmen's Action</b></label>
-									<?php
-									if ($result->RegDate==""): ?>
-									  <input type="text" class="selectpicker form-control" data-style="btn-outline-primary" readonly value="<?php echo "NA"; ?>">
-									<?php else: ?>
-									  <div class="avatar mr-2 flex-shrink-0">
-										<input type="text" class="selectpicker form-control" data-style="btn-outline-primary" readonly value="<?php echo htmlentities($result->RegDate); ?>">
-									  </div>
-									<?php endif ?>
-								</div>
-							</div>
+							
 						</div>
 						<div class="row">
 							<div class="col-md-4">
 								<div class="form-group">
-									<label style="font-size:16px;"><b>Leave Status From HOD</b></label>
+									<label style="font-size:16px;"><b>Leave Status From Chairman</b></label>
 									<?php $stats=$result->HodRemarks;?>
 									<?php
 									if ($stats==1): ?>
@@ -330,24 +306,10 @@
 								</div>
 							</div>
 
-							<div class="col-md-4">
-								<div class="form-group">
-									<label style="font-size:16px;"><b>Leave Status From Chairmen</b></label>
-									<?php $stats=$result->RegRemarks;?>
-									<?php
-									if ($stats==1): ?>
-									  <input type="text" style="color: green;" class="selectpicker form-control" data-style="btn-outline-primary" readonly value="<?php echo "Approved"; ?>">
-									<?php
-									 elseif ($stats==2): ?>
-									  <input type="text" style="color: red; font-size: 16px;" class="selectpicker form-control" data-style="btn-outline-primary" readonly value="<?php echo "Rejected"; ?>">
-									  <?php
-									else: ?>
-									  <input type="text" style="color: blue;" class="selectpicker form-control" data-style="btn-outline-primary" readonly value="<?php echo "Pending"; ?>">
-									<?php endif ?>
-								</div>
-							</div>
+							
 
-							<?php 
+							<?php
+							$ad_stats=0; 
 							if(($stats==0 AND $ad_stats==0) OR ($stats==2 AND $ad_stats==0) OR ($stats==2 AND $ad_stats==2))
 							  {
 
