@@ -249,21 +249,8 @@
 						</div>
 						<div class="form-group row">
 							<div class="col-md-6 col-sm-12">
-							    <div class="form-group">
-									<label style="font-size:16px;"><b>HOD's Approval</b></label>
-									<?php
-									if ($result->HodSign==""): ?>
-									  <input type="text" class="selectpicker form-control" data-style="btn-outline-primary" readonly value="<?php echo "NA"; ?>">
-									<?php else: ?>
-									  <div class="avatar mr-2 flex-shrink-0">
-										<img src="<?php echo '../signature/'.($result->HodSign);?>" width="100" height="40" alt="">
-									  </div>
-									<?php endif ?>
-							    </div>
-							</div>
-							<div class="col-md-6 col-sm-12">
 								<div class="form-group">
-									<label style="font-size:16px;"><b>Rector's/Registra's Approval</b></label>
+									<label style="font-size:16px;"><b>Chairman's Approval</b></label>
 									<?php
 									if ($result->RegSign==""): ?>
 									  <input type="text" class="selectpicker form-control" data-style="btn-outline-primary" readonly value="<?php echo "NA"; ?>">
@@ -277,21 +264,8 @@
 						</div>
 						<div class="form-group row">
 							<div class="col-md-6 col-sm-12">
-							    <div class="form-group">
-									<label style="font-size:16px;"><b>Date For HOD's Action</b></label>
-									<?php
-									if ($result->HodDate==""): ?>
-									  <input type="text" class="selectpicker form-control" data-style="btn-outline-primary" readonly value="<?php echo "NA"; ?>">
-									<?php else: ?>
-									  <div class="avatar mr-2 flex-shrink-0">
-										<input type="text" class="selectpicker form-control" data-style="btn-outline-primary" readonly value="<?php echo htmlentities($result->HodDate); ?>">
-									  </div>
-									<?php endif ?>
-							    </div>
-							</div>
-							<div class="col-md-6 col-sm-12">
 								<div class="form-group">
-									<label style="font-size:16px;"><b>Date For Rector's/Registra's Action</b></label>
+									<label style="font-size:16px;"><b>Date For Chairman's Action</b></label>
 									<?php
 									if ($result->RegDate==""): ?>
 									  <input type="text" class="selectpicker form-control" data-style="btn-outline-primary" readonly value="<?php echo "NA"; ?>">
@@ -304,26 +278,10 @@
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-md-4">
-								<div class="form-group">
-									<label style="font-size:16px;"><b>Leave Status From HOD</b></label>
-									<?php $stats=$result->HodRemarks;?>
-									<?php
-									if ($stats==1): ?>
-									  <input type="text" style="color: green;" class="selectpicker form-control" data-style="btn-outline-primary" readonly value="<?php echo "Approved"; ?>">
-									<?php
-									 elseif ($stats==2): ?>
-									  <input type="text" style="color: red; font-size: 16px;" class="selectpicker form-control" data-style="btn-outline-primary" readonly value="<?php echo "Rejected"; ?>">
-									  <?php
-									else: ?>
-									  <input type="text" style="color: blue;" class="selectpicker form-control" data-style="btn-outline-primary" readonly value="<?php echo "Pending"; ?>">
-									<?php endif ?>
-								</div>
-							</div>
 
 							<div class="col-md-4">
 								<div class="form-group">
-									<label style="font-size:16px;"><b>Leave Status From Rector/Registra</b></label>
+									<label style="font-size:16px;"><b>Leave Status From Chairman</b></label>
 									<?php $ad_stats=$result->RegRemarks;?>
 									<?php
 									if ($ad_stats==1): ?>
@@ -339,7 +297,7 @@
 							</div>
 
 							<?php 
-							if(($stats==0 AND $ad_stats==0) OR ($stats==1 AND $ad_stats==0) OR ($stats==1 AND $ad_stats==2))
+							if(isset($stats) && (($stats==0 && $ad_stats==0) || ($stats==1 && $ad_stats==0) || ($stats==1 && $ad_stats==2)))
 							  {
 
 							 ?>

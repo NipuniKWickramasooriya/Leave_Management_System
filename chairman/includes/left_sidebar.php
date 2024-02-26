@@ -17,13 +17,7 @@
 						</a>
 						
 					</li>
-					
-					<li class="dropdown">
-						<a href="apply_leave.php" class="dropdown-toggle no-arrow">
-							<span class="micon dw dw-house-1"></span><span class="mtext">Apply Leave</span>
-						</a>
-						
-					</li>
+				
 					<li class="dropdown">
 						<a href="javascript:;" class="dropdown-toggle">
 							<span class="micon dw dw-apartment"></span><span class="mtext"> Leave </span>

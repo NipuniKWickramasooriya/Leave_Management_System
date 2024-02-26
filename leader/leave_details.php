@@ -321,7 +321,8 @@
 							</div>
 
 							<?php 
-							if(($stats==0 AND $ad_stats==0) OR ($stats==2 AND $ad_stats==0) OR ($stats==2 AND $ad_stats==2))
+							 $ad_stats = 0; 
+							 if(($stats==0 AND $ad_stats==0) OR ($stats==2 AND $ad_stats==0) OR ($stats==2 AND $ad_stats==2))
 							  {
 
 							 ?>
