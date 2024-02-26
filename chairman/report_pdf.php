@@ -34,10 +34,10 @@
 	    {
 	    	$this->Ln(5);
 	    	$this->SetFont('helvetica','B', 14);
-	    	$this->Cell(189, 5, 'Codelytical Institute of Programming', 0, 1, 'C');
+	    	$this->Cell(189, 5, 'Ceylon Petroleum Storage Terminals Limited', 0, 1, 'C');
 	    	$this->SetFont('helvetica','B', 14);
 	    	$this->Ln(2);
-	    	$this->Cell(189, 3, 'P.O. Box 1, Youtube', 0, 1, 'C');
+	    	$this->Cell(189, 3, 'Kollonnawa, Wellampitiya', 0, 1, 'C');
 	    	$this->SetFont('helvetica','B', 14);
 	    	$this->Ln(2);
 	    	$this->Cell(189, 3, 'LEAVE APPLICATION FORM', 0, 1, 'C');
