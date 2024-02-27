@@ -60,7 +60,7 @@
 
 						<?php
 						$status=1;
-						$sql = "SELECT id from tblleave where HodRemarks=:status";
+						$sql = "SELECT id from tblmgleave where HodRemarks=:status";
 						$query = $dbh -> prepare($sql);
 						$query->bindParam(':status',$status,PDO::PARAM_STR);
 						$query->execute();
@@ -84,7 +84,7 @@
 
 						<?php
 						$status=0;
-						$sql = "SELECT id from tblleave where HodRemarks=:status";
+						$sql = "SELECT id from tblmgleave where HodRemarks=:status";
 						$query = $dbh -> prepare($sql);
 						$query->bindParam(':status',$status,PDO::PARAM_STR);
 						$query->execute();
@@ -108,7 +108,7 @@
 
 						<?php
 						$status=2;
-						$sql = "SELECT id from tblleave where HodRemarks=:status";
+						$sql = "SELECT id from tblmgleave where HodRemarks=:status";
 						$query = $dbh -> prepare($sql);
 						$query->bindParam(':status',$status,PDO::PARAM_STR);
 						$query->execute();

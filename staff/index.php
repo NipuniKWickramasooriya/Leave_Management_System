@@ -42,8 +42,8 @@
 								<th>DATE FROM</th>
 								<th>DATE TO</th>
 								<th>NO. OF DAYS</th>
-								<th>TEAM LEADER STATUS</th>
-								<th>HOD STATUS</th>
+								<th>LEADER STATUS</th>
+								<th>MANAGER STATUS</th>
 								 </tr>
 						</thead>
 						<tbody>

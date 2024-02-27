@@ -42,7 +42,7 @@
 		$admremarkdate=date('Y-m-d ', strtotime("now"));
 
 		if ($status === '2') {
-			$result = mysqli_query($conn,"update tblleave, tblemployees set tblleave.HodRemarks='$status',tblleave.HodDate='$admremarkdate' where tblleave.empid = tblemployees.emp_id AND tblleave.id='$did'");
+			$result = mysqli_query($conn,"update tblmgleave, tblemployees set tblmgleave.HodRemarks='$status',tblmgleave.HodDate='$admremarkdate' where tblmgleave.empid = tblemployees.emp_id AND tblmgleave.id='$did'");
 
 			if ($result) {
 				if (filter_var($hodEmail, FILTER_VALIDATE_EMAIL)){
@@ -60,7 +60,7 @@
 			} 
 		}
 		elseif ($status === '1') {
-				$result = mysqli_query($conn,"update tblleave, tblemployees set tblleave.HodRemarks='$status',tblleave.HodSign='$signature',tblleave.HodDate='$admremarkdate' where tblleave.empid = tblemployees.emp_id AND tblleave.id='$did'");
+				$result = mysqli_query($conn,"update tblmgleave, tblemployees set tblmgleave.HodRemarks='$status',tblmgleave.HodSign='$signature',tblmgleave.HodDate='$admremarkdate' where tblmgleave.empid = tblemployees.emp_id AND tblmgleave.id='$did'");
 
 				if ($result) {
 					if (filter_var($hodEmail, FILTER_VALIDATE_EMAIL)){

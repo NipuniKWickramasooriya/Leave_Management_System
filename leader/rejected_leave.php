@@ -38,9 +38,9 @@
 								<th class="table-plus datatable-nosort">STAFF NAME</th>
 								<th>LEAVE TYPE</th>
 								<th>APPLIED DATE</th>
-								<th>LEADER STATUS</th>
-								<th>REG. STATUS</th>
-								<th class="datatable-nosort">ACTION</th>
+								<!--<th>LEADER STATUS</th>-->
+								<th>MANAGER STATUS</th>
+								<!--<th class="datatable-nosort">ACTION</th>-->
 							</tr>
 						</thead>
 						<tbody>
@@ -48,7 +48,7 @@
 
 								<?php 
 								$status=2;
-								$sql = "SELECT tblleave.id as lid,tblemployees.FirstName,tblemployees.LastName,tblemployees.emp_id,tblemployees.Gender,tblemployees.Phonenumber,tblemployees.EmailId,tblemployees.Av_leave,tblemployees.Position_Staff,tblemployees.emp_id,tblleave.LeaveType,tblleave.ToDate,tblleave.FromDate,tblleave.PostingDate,tblleave.RequestedDays,tblleave.DaysOutstand,tblleave.Sign,tblleave.WorkCovered,tblleave.HodRemarks,tblleave.RegRemarks,tblleave.HodSign,tblleave.RegSign,tblleave.HodDate,tblleave.RegDate,tblleave.num_days from tblleave join tblemployees on tblleave.empid=tblemployees.emp_id where tblleave.HodRemarks= '$status' and tblemployees.role = 'Staff' and tblemployees.Department = '$session_depart' order by lid desc";
+								$sql = "SELECT tblleave.id as lid,tblemployees.FirstName,tblemployees.LastName,tblemployees.emp_id,tblemployees.Gender,tblemployees.Phonenumber,tblemployees.EmailId,tblemployees.Av_leave,tblemployees.Position_Staff,tblemployees.emp_id,tblleave.LeaveType,tblleave.ToDate,tblleave.FromDate,tblleave.PostingDate,tblleave.RequestedDays,tblleave.DaysOutstand,tblleave.Sign,tblleave.WorkCovered,tblleave.HodRemarks,tblleave.RegRemarks,tblleave.HodSign,tblleave.RegSign,tblleave.HodDate,tblleave.RegDate,tblleave.num_days from tblleave join tblemployees on tblleave.empid=tblemployees.emp_id where tblleave.HodRemarks= '$status' and tblemployees.role = 'Leader' and tblemployees.Department = '$session_depart' order by lid desc";
 									$query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
 									while ($row = mysqli_fetch_array($query)) {
 								 ?>  
@@ -65,16 +65,16 @@
 								</td>
 								<td><?php echo $row['LeaveType']; ?></td>
 	                            <td><?php echo $row['PostingDate']; ?></td>
-								<td><?php $stats=$row['HodRemarks']; // RENAME AS LEADER REMARK IN FRONT-END
+								<!--<td><//?php $stats=$row['HodRemarks']; // RENAME AS LEADER REMARK IN FRONT-END
 	                             if($stats==1){
 	                              ?>
 	                                  <span style="color: green">Approved</span>
-	                                  <?php } if($stats==2)  { ?>
+	                                  <//?php } if($stats==2)  { ?>
 	                                 <span style="color: red">Rejected</span>
-	                                  <?php } if($stats==0)  { ?>
+	                                  <//?php } if($stats==0)  { ?>
 	                             <span style="color: blue">Pending</span>
-	                             <?php } ?>
-	                            </td>
+	                             <//?php } ?>
+	                            </td>-->
 	                            <td><?php $stats=$row['RegRemarks'];
 	                             if($stats==1){
 	                              ?>
@@ -85,11 +85,11 @@
 	                             <span style="color: blue">Pending</span>
 	                             <?php } ?>
 	                            </td>
-								<td>
+								<!--<td>
 									<div class="table-actions">
-										<a title="VIEW" href="leave_details.php?leaveid=<?php echo $row['lid'];?>"><i class="dw dw-eye" data-color="#265ed7"></i></a>	
+										<a title="VIEW" href="leave_details.php?leaveid=<//?php echo $row['lid'];?>"><i class="dw dw-eye" data-color="#265ed7"></i></a>	
 									</div>
-								</td>
+								</td>-->
 							</tr>
 							<?php }?>
 						</tbody>
