@@ -30,7 +30,7 @@
 
 			<div class="card-box mb-30">
 				<div class="pd-20">
-						<h2 class="text-blue h4">ALL STAFF LEAVE APPLICATIONS</h2>
+						<h2 class="text-blue h4">ALL LEAVE APPLICATIONS</h2>
 					</div>
 				<div class="pb-20">
 					<table class="data-table table stripe hover nowrap">
@@ -39,9 +39,7 @@
 								<th class="table-plus datatable-nosort">STAFF NAME</th>
 								<th>LEAVE TYPE</th>
 								<th>APPLIED DATE</th>
-								<th>LEADER STATUS</th>
-								<th>MANAGER STATUS</th>
-								<th class="datatable-nosort">ACTION</th>
+								<th>CHAIRMAN STATUS</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -49,7 +47,7 @@
 
 								<?php 
 								$status=1;
-								$sql = "SELECT tblleave.id as lid,tblemployees.FirstName,tblemployees.LastName,tblemployees.emp_id,tblemployees.Gender,tblemployees.Phonenumber,tblemployees.EmailId,tblemployees.Av_leave,tblemployees.Position_Staff,tblemployees.emp_id,tblleave.LeaveType,tblleave.ToDate,tblleave.FromDate,tblleave.PostingDate,tblleave.RequestedDays,tblleave.DaysOutstand,tblleave.Sign,tblleave.WorkCovered,tblleave.HodRemarks,tblleave.RegRemarks,tblleave.HodSign,tblleave.RegSign,tblleave.HodDate,tblleave.RegDate,tblleave.num_days from tblleave join tblemployees on tblleave.empid=tblemployees.emp_id where tblleave.HodRemarks= '$status' order by lid desc limit 10";
+								$sql = "SELECT tblmgleave.id as lid,tblemployees.FirstName,tblemployees.LastName,tblemployees.emp_id,tblemployees.Gender,tblemployees.Phonenumber,tblemployees.EmailId,tblemployees.Av_leave,tblemployees.Position_Staff,tblemployees.emp_id,tblmgleave.LeaveType,tblmgleave.ToDate,tblmgleave.FromDate,tblmgleave.PostingDate,tblmgleave.RequestedDays,tblmgleave.DaysOutstand,tblmgleave.Sign,tblmgleave.WorkCovered,tblmgleave.HodRemarks,tblmgleave.RegRemarks,tblmgleave.HodSign,tblmgleave.RegSign,tblmgleave.HodDate,tblmgleave.RegDate,tblmgleave.num_days from tblmgleave join tblemployees on tblmgleave.empid=tblemployees.emp_id where tblmgleave.HodRemarks= '$status' order by lid desc limit 10";
 									$query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
 									while ($row = mysqli_fetch_array($query)) {
 
@@ -77,27 +75,8 @@
 	                             <span style="color: blue">Pending</span>
 	                             <?php } ?>
 	                            </td>
-	                            <td><?php $stats=$row['RegRemarks'];
-	                             if($stats==1){
-	                              ?>
-	                                  <span style="color: green">Approved</span>
-	                                  <?php } if($stats==2)  { ?>
-	                                 <span style="color: red">Rejected</span>
-	                                  <?php } if($stats==0)  { ?>
-	                             <span style="color: blue">Pending</span>
-	                             <?php } ?>
-	                            </td>
-								<td>
-									<div class="dropdown">
-										<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-											<i class="dw dw-more"></i>
-										</a>
-										<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-											<a class="dropdown-item" href="leave_details.php?leaveid=<?php echo $row['lid']; ?>"><i class="dw dw-eye"></i> View</a>
-											<a class="dropdown-item" href="admin_dashboard.php?leaveid=<?php echo $row['lid']; ?>"><i class="dw dw-delete-3"></i> Delete</a>
-										</div>
-									</div>
-								</td>
+	                           
+								
 							</tr>
 							<?php }?>
 						</tbody>
@@ -105,71 +84,7 @@
 			   </div>
 			</div>
 
-			<div class="card-box mb-30">
-				<div class="pd-20">
-						<h2 class="text-blue h4">ALL LEADER'S LEAVE APPLICATIONS</h2>
-					</div>
-				<div class="pb-20">
-					<table class="data-table table stripe hover nowrap">
-						<thead>
-							<tr>
-								<th class="table-plus datatable-nosort">LEADER NAME</th>
-								<th>LEAVE TYPE</th>
-								<th>APPLIED DATE</th>
-								<th>MANAGER STATUS</th>
-								<th class="datatable-nosort">ACTION</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-
-								<?php 
-								$status=0;
-								$sql = "SELECT tblleave.id as lid,tblemployees.FirstName,tblemployees.LastName,tblemployees.emp_id,tblemployees.Gender,tblemployees.Phonenumber,tblemployees.EmailId,tblemployees.Av_leave,tblemployees.Position_Staff,tblemployees.emp_id,tblleave.LeaveType,tblleave.ToDate,tblleave.FromDate,tblleave.PostingDate,tblleave.RequestedDays,tblleave.DaysOutstand,tblleave.Sign,tblleave.WorkCovered,tblleave.HodRemarks,tblleave.RegRemarks,tblleave.HodSign,tblleave.RegSign,tblleave.HodDate,tblleave.RegDate,tblleave.num_days from tblleave join tblemployees on tblleave.empid=tblemployees.emp_id where tblleave.HodRemarks= '$status' order by lid desc limit 10";
-									$query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
-									while ($row = mysqli_fetch_array($query)) {
-
-								 ?>  
-
-								<td class="table-plus">
-									<div class="name-avatar d-flex align-items-center">
-										<div class="avatar mr-2 flex-shrink-0">
-											<img src="<?php echo (!empty($row['location'])) ? '../uploads/'.$row['location'] : '../uploads/NO-IMAGE-AVAILABLE.jpg'; ?>" class="border-radius-100 shadow" width="40" height="40" alt="">
-										</div>
-										<div class="txt">
-											<div class="weight-600"><?php echo $row['FirstName']." ".$row['LastName'];?></div>
-										</div>
-									</div>
-								</td>
-								<td><?php echo $row['LeaveType']; ?></td>
-	                            <td><?php echo $row['PostingDate']; ?></td>
-	                            <td><?php $stats=$row['RegRemarks'];
-	                             if($stats==1){
-	                              ?>
-	                                  <span style="color: green">Approved</span>
-	                                  <?php } if($stats==2)  { ?>
-	                                 <span style="color: red">Rejected</span>
-	                                  <?php } if($stats==0)  { ?>
-	                             <span style="color: blue">Pending</span>
-	                             <?php } ?>
-	                            </td>
-								<td>
-									<div class="dropdown">
-										<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-											<i class="dw dw-more"></i>
-										</a>
-										<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-											<a class="dropdown-item" href="leave_details.php?leaveid=<?php echo $row['lid']; ?>"><i class="dw dw-eye"></i> View</a>
-											<a class="dropdown-item" href="admin_dashboard.php?leaveid=<?php echo $row['lid']; ?>"><i class="dw dw-delete-3"></i> Delete</a>
-										</div>
-									</div>
-								</td>
-							</tr>
-							<?php }?>
-						</tbody>
-					</table>
-			   </div>
-			</div>
+			
 
 			<?php include('includes/footer.php'); ?>
 		</div>

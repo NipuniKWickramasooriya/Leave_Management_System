@@ -250,7 +250,7 @@
 						<div class="form-group row">
 							<div class="col-md-6 col-sm-12">
 								<div class="form-group">
-									<label style="font-size:16px;"><b>Chairman's Approval</b></label>
+									<label style="font-size:16px;"><b>Manager's Approval</b></label>
 									<?php
 									if ($result->RegSign==""): ?>
 									  <input type="text" class="selectpicker form-control" data-style="btn-outline-primary" readonly value="<?php echo "NA"; ?>">
@@ -265,7 +265,7 @@
 						<div class="form-group row">
 							<div class="col-md-6 col-sm-12">
 								<div class="form-group">
-									<label style="font-size:16px;"><b>Date For Chairman's Action</b></label>
+									<label style="font-size:16px;"><b>Date For Manager's Action</b></label>
 									<?php
 									if ($result->RegDate==""): ?>
 									  <input type="text" class="selectpicker form-control" data-style="btn-outline-primary" readonly value="<?php echo "NA"; ?>">
@@ -281,7 +281,7 @@
 
 							<div class="col-md-4">
 								<div class="form-group">
-									<label style="font-size:16px;"><b>Leave Status From Chairman</b></label>
+									<label style="font-size:16px;"><b>Leave Status From Manager</b></label>
 									<?php $ad_stats=$result->RegRemarks;?>
 									<?php
 									if ($ad_stats==1): ?>
@@ -297,7 +297,8 @@
 							</div>
 
 							<?php 
-							if(isset($stats) && (($stats==0 && $ad_stats==0) || ($stats==1 && $ad_stats==0) || ($stats==1 && $ad_stats==2)))
+							$ad_stats=0;
+							if(isset($stats) && (($stats==0 && $ad_stats==0) || ($stats==2 && $ad_stats==0) || ($stats==2 && $ad_stats==2)))
 							  {
 
 							 ?>
