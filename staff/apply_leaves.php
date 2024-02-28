@@ -218,12 +218,12 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-12">
                             <div class="title">
-                                <h4>Leave Type List</h4>
+                                <h4>Apply Leave</h4>
                             </div>
                             <nav aria-label="breadcrumb" role="navigation">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="admin_dashboard.php">Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Signature Module</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Apply Leave</li>
                                 </ol>
                             </nav>
                         </div>
