@@ -82,7 +82,7 @@
 
 						<?php
 						$status=0;
-						$sql = "SELECT id from tblleave where HodRemarks=:status";
+						$sql = "SELECT id from tblleave where RegRemarks=:status";
 						$query = $dbh -> prepare($sql);
 						$query->bindParam(':status',$status,PDO::PARAM_STR);
 						$query->execute();

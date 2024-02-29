@@ -97,7 +97,7 @@
 ?>
 
 <?php
-    include('../sendmail.php');
+    //include('../sendmail.php');
 
 	if(isset($_POST['apply']))
 	{
@@ -142,11 +142,7 @@
 
         $signature ="sig_" .$cut. "_".$row['Phonenumber']. "_" .$session_id . '.'.$image_type;
 
-	if($fromdate > $todate)
-	{
-	    echo "<script>alert('End Date should be greater than Start Date');</script>";
-	  }
-	elseif($leave_days <= 0)
+	if($leave_days <= 0)
 	{
 	    echo "<script>alert('YOU HAVE EXCEEDED YOUR LEAVE LIMIT. LEAVE APPLICATION FAILED');</script>";
 	  }
