@@ -58,7 +58,8 @@
 
 						<?php
 						$status=1;
-						$sql = "SELECT id from tblleave where HodRemarks=:status";
+						$username = $session_id;
+						$sql = "SELECT tblleave.id from tblleave join tblemployees on tblleave.empid=tblemployees.emp_id where tblemployees.reporting_person_id = '$username' and  HodRemarks=:status";
 						$query = $dbh -> prepare($sql);
 						$query->bindParam(':status',$status,PDO::PARAM_STR);
 						$query->execute();
@@ -82,7 +83,8 @@
 
 						<?php
 						$status=0;
-						$sql = "SELECT id from tblleave where RegRemarks=:status";
+						$username = $session_id;
+						$sql = "SELECT tblleave.id from tblleave join tblemployees on tblleave.empid=tblemployees.emp_id where tblemployees.reporting_person_id = '$username' and RegRemarks=:status";
 						$query = $dbh -> prepare($sql);
 						$query->bindParam(':status',$status,PDO::PARAM_STR);
 						$query->execute();
@@ -106,7 +108,8 @@
 
 						<?php
 						$status=2;
-						$sql = "SELECT id from tblleave where HodRemarks=:status";
+						$username = $session_id;
+						$$sql = "SELECT tblleave.id from tblleave join tblemployees on tblleave.empid=tblemployees.emp_id where tblemployees.reporting_person_id = '$username' and  HodRemarks=:status";
 						$query = $dbh -> prepare($sql);
 						$query->bindParam(':status',$status,PDO::PARAM_STR);
 						$query->execute();
@@ -146,8 +149,14 @@
 						</thead>
 						<tbody>
 							<tr>
-
-								<?php $sql = "SELECT tblleave.id as lid,tblemployees.FirstName,tblemployees.LastName,tblemployees.emp_id,tblemployees.Gender,tblemployees.Phonenumber,tblemployees.EmailId,tblemployees.Av_leave,tblemployees.Position_Staff,tblleave.LeaveType,tblleave.ToDate,tblleave.FromDate,tblleave.PostingDate,tblleave.RequestedDays,tblleave.DaysOutstand,tblleave.Sign,tblleave.WorkCovered,tblleave.HodRemarks,tblleave.RegRemarks,tblleave.HodSign,tblleave.RegSign,tblleave.HodDate,tblleave.RegDate,tblleave.num_days from tblleave join tblemployees on tblleave.empid=tblemployees.emp_id where tblemployees.role = 'Staff' and Department = '$session_depart' order by lid desc limit 5";
+								
+								<?php
+								$username = $session_id; 
+								$sql = "SELECT tblleave.id 
+								as lid,tblemployees.FirstName,tblemployees.LastName,tblemployees.emp_id,tblemployees.Gender,tblemployees.Phonenumber,tblemployees.EmailId,tblemployees.Av_leave,tblemployees.Position_Staff,tblleave.LeaveType,tblleave.ToDate,tblleave.FromDate,tblleave.PostingDate,tblleave.RequestedDays,tblleave.DaysOutstand,tblleave.Sign,tblleave.WorkCovered,tblleave.HodRemarks,tblleave.RegRemarks,tblleave.HodSign,tblleave.RegSign,tblleave.HodDate,tblleave.RegDate,tblleave.num_days 
+								from tblleave 
+								join tblemployees on tblleave.empid=tblemployees.emp_id where tblemployees.reporting_person_id = '$username' 
+								order by lid desc limit 5";
 									$query = $dbh -> prepare($sql);
 									$query->execute();
 									$results=$query->fetchAll(PDO::FETCH_OBJ);
