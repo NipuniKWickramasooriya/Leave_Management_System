@@ -14,7 +14,11 @@
 						</a>
 					</li>
 
-					
+					<li class="dropdown">
+						<a href="reporting_person.php" class="dropdown-toggle no-arrow">
+							<span class="micon dw dw-house-1"></span><span class="mtext">Reporting Person</span>
+						</a>
+					</li>
 
 					<li>
 						<div class="dropdown-divider"></div>
