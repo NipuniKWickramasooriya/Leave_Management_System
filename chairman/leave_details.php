@@ -323,13 +323,6 @@
 								</div>
 							</div>
 
-							<div class="col-md-12 col-sm-12">
-                                        <div class="form-group">
-										<label style="font-size:16px;"><b>Reason For Rejecting <span style="color:crimson;">(If Action is Rejectd, Please type here)</span> :</b></label>
-                                            <input id="reject_reason" name="reject_reason" type="text"  placeholder="Please Type Here....." class="form-control" required="true" autocomplete="off" value="">
-                                        </div>
-                                    </div>
-
 							<form name="adminaction" method="post">
   								<div class="modal fade" id="success-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 									<div class="modal-dialog modal-dialog-centered" role="document">
@@ -342,6 +335,14 @@
 				                                          <option value="2">Rejected</option>
 												</select>
 											</div>
+
+											<div class="col-md-12 col-sm-12">
+												<div class="form-group">
+												<label style="font-size:16px;"><b>Reason For Rejecting <span style="color:crimson;">(If Action is Rejectd, Please type here)</span></b></label>
+													<input id="reject_reason" name="reject_reason" type="text"  placeholder="Please Type Here....." class="form-control" required="true" autocomplete="off" value="">
+												</div>
+											</div>
+
 											<div class="modal-footer justify-content-center">
 												<input type="submit" class="btn btn-primary" name="update" value="Submit">
 											</div>
