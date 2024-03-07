@@ -175,8 +175,7 @@
             if (filter_var($staffEmailId, FILTER_VALIDATE_EMAIL)) {
                 
                 if (filter_var($hEmailId, FILTER_VALIDATE_EMAIL)) {
-                    $sql="INSERT INTO tblleave(LeaveType,ToDate,FromDate,RequestedDays,DaysOutstand,Sign,WorkCovered,HodRemarks,RegRemarks,IsRead,empid,num_days,PostingDate)	VALUES('$leave_type','$todate','$fromdate', '$requested_days','$leave_days','$signature','$work_cover','$hod_status','$reg_status','$isread','$empid', '$requested_days', '$datePosting')";
-                    $lastInsertId = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+                    echo "<script>alert('Something went wrong. Please try again');</script>";
                     if($lastInsertId)
                     {
                         echo "<script>alert('Number of Days: ".$requested_days."');</script>";
